@@ -1,0 +1,106 @@
+<!-- Settings Page -->
+<section class="header-section">
+    <h1>Settings</h1>
+</section>
+
+<div class="settings-container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="settings-nav">
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action active" data-settings-tab="appearance">
+                        Appearance
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action" data-settings-tab="library">
+                        Library
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action" data-settings-tab="playback">
+                        Playback
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action" data-settings-tab="account">
+                        Account
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="settings-content">
+                <!-- Appearance Settings -->
+                <div class="settings-panel" id="appearance-panel">
+                    <h3>Appearance Settings</h3>
+                    <div class="mb-3">
+                        <label class="form-label">Theme</label>
+                        <select class="form-select" id="themeSelect">
+                            <option value="dark" <%= settings.theme === 'dark' ? 'selected' : '' %>>Dark Theme</option>
+                            <option value="light" <%= settings.theme === 'light' ? 'selected' : '' %>>Light Theme</option>
+                            <option value="system" <%= settings.theme === 'system' ? 'selected' : '' %>>System Preference</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Accent Color</label>
+                        <div class="color-options">
+                            <span class="color-option <%= settings.accentColor === '#1E90FF' ? 'active' : '' %>" style="background-color: #1E90FF;" data-color="#1E90FF"></span>
+                            <span class="color-option <%= settings.accentColor === '#FF1E8E' ? 'active' : '' %>" style="background-color: #FF1E8E;" data-color="#FF1E8E"></span>
+                            <span class="color-option <%= settings.accentColor === '#1EFF8E' ? 'active' : '' %>" style="background-color: #1EFF8E;" data-color="#1EFF8E"></span>
+                            <span class="color-option <%= settings.accentColor === '#8E1EFF' ? 'active' : '' %>" style="background-color: #8E1EFF;" data-color="#8E1EFF"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Library Settings -->
+                <div class="settings-panel" id="library-panel" style="display: none;">
+                    <h3>Library Settings</h3>
+                    <div class="mb-3 form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="showCategoriesInLibrary" <%= settings.showCategoriesInLibrary ? 'checked' : '' %>>
+                        <label class="form-check-label" for="showCategoriesInLibrary">Show categories in library view</label>
+                    </div>
+                    <div class="mb-3 form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="groupByCategory" <%= settings.groupByCategory ? 'checked' : '' %>>
+                        <label class="form-check-label" for="groupByCategory">Group songs by category</label>
+                    </div>
+                    <div class="mb-3 form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="showRecentlyPlayed" <%= settings.showRecentlyPlayed ? 'checked' : '' %>>
+                        <label class="form-check-label" for="showRecentlyPlayed">Show recently played section</label>
+                    </div>
+                </div>
+                
+                <!-- Playback Settings -->
+                <div class="settings-panel" id="playback-panel" style="display: none;">
+                    <h3>Playback Settings</h3>
+                    <div class="mb-3 form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="autoplayToggle" <%= settings.autoplay ? 'checked' : '' %>>
+                        <label class="form-check-label" for="autoplayToggle">Autoplay when clicking on a song</label>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Audio Quality</label>
+                        <select class="form-select" id="audioQualitySelect">
+                            <option value="auto" <%= settings.audioQuality === 'auto' ? 'selected' : '' %>>Auto (Recommended)</option>
+                            <option value="high" <%= settings.audioQuality === 'high' ? 'selected' : '' %>>High</option>
+                            <option value="medium" <%= settings.audioQuality === 'medium' ? 'selected' : '' %>>Medium</option>
+                            <option value="low" <%= settings.audioQuality === 'low' ? 'selected' : '' %>>Low</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Account Settings -->
+                <div class="settings-panel" id="account-panel" style="display: none;">
+                    <h3>Account Settings</h3>
+                    <div class="mb-3">
+                        <label class="form-label">Account Type</label>
+                        <p><span class="badge bg-primary">Pro</span></p>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Storage Used</label>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: <%= storageUsed.percentage %>%;" aria-valuenow="<%= storageUsed.percentage %>" aria-valuemin="0" aria-valuemax="100"><%= storageUsed.percentage %>%</div>
+                        </div>
+                        <small class="text-muted"><%= storageUsed.used %> of <%= storageUsed.total %> used</small>
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-danger" id="clearDataBtn">Clear All Data</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

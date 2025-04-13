@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechIT - <%= pageTitle %></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet">
+    <%- style %>
+</head>
+<body>
+    <% if (typeof currentUser !== 'undefined' && currentUser) { %>
+        <!-- Authenticated Layout -->
+        <div class="app-container">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="brand">
+                    <h2>TechIT</h2>
+                </div>
+                <div class="sidebar-menu">
+                    <a href="/" class="menu-item <%= currentPage === 'home' ? 'active' : '' %>" id="home-tab">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    <a href="/search" class="menu-item <%= currentPage === 'search' ? 'active' : '' %>" id="search-tab">
+                        <i class="fas fa-search"></i>
+                        <span>Search</span>
+                    </a>
+                    <a href="/library" class="menu-item <%= currentPage === 'library' ? 'active' : '' %>" id="library-tab">
+                        <i class="fas fa-book"></i>
+                        <span>My Library</span>
+                    </a>
+                    <a href="/add-music" class="menu-item <%= currentPage === 'add-music' ? 'active' : '' %>" id="addNewMusic">
+                        <i class="fas fa-plus"></i>
+                        <span>New playlist</span>
+                    </a>
+                    <a href="/liked" class="menu-item <%= currentPage === 'liked' ? 'active' : '' %>" id="liked-tab">
+                        <i class="fas fa-heart"></i>
+                        <span>Liked songs</span>
+                    </a>
+                </div>
+                <div class="sidebar-footer">
+                    <a href="/settings" class="menu-item <%= currentPage === 'settings' ? 'active' : '' %>" id="settings-tab">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                    <a href="/logout" class="menu-item" id="logout-tab">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Log out</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <div class="pro-badge">Pro</div>
+                
+                <%- body %>
+            </div>
+        </div>
+
+        <!-- Logout Confirmation Modal -->
+        <div class="modal fade" id="logoutModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Confirm Logout</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to log out from TechIT?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <a href="/logout" class="btn btn-danger">Log Out</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% } else { %>
+        <!-- Unauthenticated Layout (for login/register) -->
+        <div class="auth-layout">
+            <%- body %>
+        </div>
+    <% } %>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <% if (typeof currentUser !== 'undefined' && currentUser) { %>
+        <script src="/js/common.js"></script>
+    <% } %>
+    <% if (typeof scripts !== 'undefined' && scripts && scripts.length > 0) { %>
+        <% scripts.forEach(function(script) { %>
+            <script src="/js/<%= script %>.js"></script>
+        <% }); %>
+    <% } %>
+</body>
+</html> 

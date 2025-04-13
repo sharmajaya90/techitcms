@@ -1,0 +1,29 @@
+<!-- Error Page -->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header bg-danger text-white">
+                    <h3><i class="fas fa-exclamation-triangle me-2"></i> Error</h3>
+                </div>
+                <div class="card-body">
+                    <h4><%= message %></h4>
+                    <% if (error && error.status) { %>
+                        <p>Status: <%= error.status %></p>
+                    <% } %>
+                    <% if (process.env.NODE_ENV !== 'production' && error && error.stack) { %>
+                        <div class="mt-4">
+                            <h5>Stack Trace:</h5>
+                            <pre class="bg-light p-3 mt-2"><%= error.stack %></pre>
+                        </div>
+                    <% } %>
+                    <div class="mt-4">
+                        <a href="/" class="btn btn-primary">
+                            <i class="fas fa-home me-2"></i> Back to Home
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

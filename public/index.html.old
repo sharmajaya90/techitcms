@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio X - Music Library</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="brand">
+                <h2>Audio X</h2>
+            </div>
+            <div class="sidebar-menu">
+                <a href="#" class="menu-item active" id="home-tab">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="#" class="menu-item" id="search-tab">
+                    <i class="fas fa-search"></i>
+                    <span>Search</span>
+                </a>
+                <a href="#" class="menu-item" id="library-tab">
+                    <i class="fas fa-book"></i>
+                    <span>My library</span>
+                </a>
+                <a href="#" class="menu-item" id="addNewMusic">
+                    <i class="fas fa-plus"></i>
+                    <span>New playlist</span>
+                </a>
+                <a href="#" class="menu-item" id="liked-tab">
+                    <i class="fas fa-heart"></i>
+                    <span>Liked songs</span>
+                </a>
+            </div>
+            <div class="sidebar-footer">
+                <a href="#" class="menu-item" id="settings-tab">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+                <a href="#" class="menu-item" id="logout-tab">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Log out</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="pro-badge">Pro</div>
+            
+            <!-- Home Page -->
+            <div id="home-page">
+                <section class="header-section">
+                    <h1>Your Library</h1>
+                </section>
+
+                <!-- Featured Section -->
+                <section class="featured-section">
+                    <div class="music-banner">
+                        <div class="banner-content">
+                            <h2>Your Music</h2>
+                            <h1>On Repeat</h1>
+                        </div>
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Categories Section -->
+                <section class="categories-section">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="category-card" id="category-workout">
+                                <div class="category-name">Work Out</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="category-card" id="category-techno">
+                                <div class="category-name">Techno 90s</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="category-card" id="category-quiet">
+                                <div class="category-name">Quiet Hours</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="category-card" id="category-rap">
+                                <div class="category-name">Rap</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="category-card" id="category-focus">
+                                <div class="category-name">Deep Focus</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="category-card" id="category-beach">
+                                <div class="category-name">Beach Vibes</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="category-card" id="category-pop">
+                                <div class="category-name">Pop Hits</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="category-card" id="category-movie">
+                                <div class="category-name">Movie Classics</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="category-card" id="category-folk">
+                                <div class="category-name">Folk Music</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="category-card" id="category-travel">
+                                <div class="category-name">Travelling</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="category-card" id="category-kids">
+                                <div class="category-name">For Kids</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="category-card" id="category-80s">
+                                <div class="category-name">80s Hits</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Music Library Section (Hidden by default) -->
+                <section class="music-library-section" style="display: none;">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h2>Your Music</h2>
+                        <button class="btn btn-primary" id="backToCategories">
+                            <i class="fas fa-arrow-left"></i> Back to Categories
+                        </button>
+                    </div>
+                    <div id="statusMessage" class="alert alert-success mt-3" style="display: none;"></div>
+                    <div id="errorMessage" class="alert alert-danger mt-3" style="display: none;"></div>
+                    <div class="row" id="musicList">
+                        <!-- Music items will be dynamically added here -->
+                        <div class="col-12 text-center">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <p>Loading music entries...</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Search Page (Hidden by default) -->
+            <div id="search-page" style="display: none;">
+                <section class="header-section">
+                    <h1>Search</h1>
+                </section>
+                
+                <div class="search-container">
+                    <div class="input-group mb-4">
+                        <span class="input-group-text">
+                            <i class="fas fa-search"></i>
+                        </span>
+                        <input type="text" class="form-control" id="searchInput" placeholder="Search songs, artists...">
+                        <button class="btn btn-primary" id="searchBtn">Search</button>
+                    </div>
+                    
+                    <div class="search-filters mb-4">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-outline-primary active" data-filter="all">All</button>
+                            <button type="button" class="btn btn-outline-primary" data-filter="title">Title</button>
+                            <button type="button" class="btn btn-outline-primary" data-filter="description">Description</button>
+                            <button type="button" class="btn btn-outline-primary" data-filter="category">Category</button>
+                        </div>
+                    </div>
+                    
+                    <div id="searchResults" class="row">
+                        <div class="col-12 text-center">
+                            <h3>Search for music to get started</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- My Library Page (Hidden by default) -->
+            <div id="library-page" style="display: none;">
+                <section class="header-section">
+                    <h1>My Library</h1>
+                </section>
+                
+                <div class="library-controls mb-4">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-outline-primary active" data-lib-filter="all">All Songs</button>
+                                <button type="button" class="btn btn-outline-primary" data-lib-filter="recent">Recently Added</button>
+                                <button type="button" class="btn btn-outline-primary" data-lib-filter="alphabetical">A-Z</button>
+                            </div>
+                        </div>
+                        <div class="col-md-6 text-end">
+                            <div class="form-check form-switch d-inline-block me-3">
+                                <input class="form-check-input" type="checkbox" id="showCategoriesSwitch" checked>
+                                <label class="form-check-label" for="showCategoriesSwitch">Group by Category</label>
+                            </div>
+                            <button class="btn btn-primary" id="addNewMusicLibrary">
+                                <i class="fas fa-plus"></i> Add Music
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="categoryGroups">
+                    <!-- Category groups will be dynamically added here -->
+                </div>
+                
+                <div id="libraryList" class="row">
+                    <!-- Library items will be dynamically added here -->
+                    <div class="col-12 text-center">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p>Loading your library...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Liked Songs Page (Hidden by default) -->
+            <div id="liked-page" style="display: none;">
+                <section class="header-section">
+                    <h1>Liked Songs</h1>
+                </section>
+                
+                <div class="liked-songs-banner mb-4">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <div class="music-banner liked-banner">
+                                <div class="banner-content">
+                                    <h2>Your Collection</h2>
+                                    <h1>Liked Songs</h1>
+                                    <p><span id="likedSongsCount">0</span> songs</p>
+                                </div>
+                                <div class="play-all-button">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="liked-stats card">
+                                <div class="card-body">
+                                    <h5>Most Liked Category</h5>
+                                    <p id="mostLikedCategory">-</p>
+                                    <h5>Recently Liked</h5>
+                                    <p id="recentlyLiked">-</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="likedList" class="row">
+                    <!-- Liked songs will be dynamically added here -->
+                    <div class="col-12 text-center">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p>Loading liked songs...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Page (Hidden by default) -->
+            <div id="settings-page" style="display: none;">
+                <section class="header-section">
+                    <h1>Settings</h1>
+                </section>
+                
+                <div class="settings-container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="settings-nav">
+                                <div class="list-group">
+                                    <a href="#" class="list-group-item list-group-item-action active" data-settings-tab="appearance">
+                                        Appearance
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action" data-settings-tab="library">
+                                        Library
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action" data-settings-tab="playback">
+                                        Playback
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action" data-settings-tab="account">
+                                        Account
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="settings-content">
+                                <!-- Appearance Settings -->
+                                <div class="settings-panel" id="appearance-panel">
+                                    <h3>Appearance Settings</h3>
+                                    <div class="mb-3">
+                                        <label class="form-label">Theme</label>
+                                        <select class="form-select" id="themeSelect">
+                                            <option value="dark">Dark Theme</option>
+                                            <option value="light">Light Theme</option>
+                                            <option value="system">System Preference</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Accent Color</label>
+                                        <div class="color-options">
+                                            <span class="color-option active" style="background-color: #1E90FF;" data-color="#1E90FF"></span>
+                                            <span class="color-option" style="background-color: #FF1E8E;" data-color="#FF1E8E"></span>
+                                            <span class="color-option" style="background-color: #1EFF8E;" data-color="#1EFF8E"></span>
+                                            <span class="color-option" style="background-color: #8E1EFF;" data-color="#8E1EFF"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Library Settings -->
+                                <div class="settings-panel" id="library-panel" style="display: none;">
+                                    <h3>Library Settings</h3>
+                                    <div class="mb-3 form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="showCategoriesInLibrary" checked>
+                                        <label class="form-check-label" for="showCategoriesInLibrary">Show categories in library view</label>
+                                    </div>
+                                    <div class="mb-3 form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="groupByCategory" checked>
+                                        <label class="form-check-label" for="groupByCategory">Group songs by category</label>
+                                    </div>
+                                    <div class="mb-3 form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="showRecentlyPlayed" checked>
+                                        <label class="form-check-label" for="showRecentlyPlayed">Show recently played section</label>
+                                    </div>
+                                </div>
+                                
+                                <!-- Playback Settings -->
+                                <div class="settings-panel" id="playback-panel" style="display: none;">
+                                    <h3>Playback Settings</h3>
+                                    <div class="mb-3 form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="autoplayToggle">
+                                        <label class="form-check-label" for="autoplayToggle">Autoplay when clicking on a song</label>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Audio Quality</label>
+                                        <select class="form-select" id="audioQualitySelect">
+                                            <option value="auto">Auto (Recommended)</option>
+                                            <option value="high">High</option>
+                                            <option value="medium">Medium</option>
+                                            <option value="low">Low</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <!-- Account Settings -->
+                                <div class="settings-panel" id="account-panel" style="display: none;">
+                                    <h3>Account Settings</h3>
+                                    <div class="mb-3">
+                                        <label class="form-label">Account Type</label>
+                                        <p><span class="badge bg-primary">Pro</span></p>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Storage Used</label>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                        </div>
+                                        <small class="text-muted">1.2GB of 5GB used</small>
+                                    </div>
+                                    <div class="mb-3">
+                                        <button class="btn btn-danger" id="clearDataBtn">Clear All Data</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Music Modal -->
+    <div class="modal fade" id="addMusicModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Music</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addMusicForm">
+                        <div class="mb-3">
+                            <label class="form-label">Title</label>
+                            <input type="text" class="form-control" name="title" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Description</label>
+                            <textarea class="form-control" name="description" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Category</label>
+                            <select class="form-control" name="category" required>
+                                <option value="">Select a category</option>
+                                <option value="workout">Work Out</option>
+                                <option value="techno">Techno 90s</option>
+                                <option value="quiet">Quiet Hours</option>
+                                <option value="rap">Rap</option>
+                                <option value="focus">Deep Focus</option>
+                                <option value="beach">Beach Vibes</option>
+                                <option value="pop">Pop Hits</option>
+                                <option value="movie">Movie Classics</option>
+                                <option value="folk">Folk Music</option>
+                                <option value="travel">Travelling</option>
+                                <option value="kids">For Kids</option>
+                                <option value="80s">80s Hits</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Cover Image</label>
+                            <input type="file" class="form-control" name="image" accept="image/*" required>
+                            <small class="text-muted">Maximum file size: 200MB</small>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Audio File</label>
+                            <input type="file" class="form-control" name="audio" accept="audio/*" required>
+                            <small class="text-muted">Maximum file size: 200MB</small>
+                        </div>
+                        <div class="progress mt-2 mb-3 d-none" id="uploadProgress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%"></div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Music Modal -->
+    <div class="modal fade" id="editMusicModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Music</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editMusicForm">
+                        <input type="hidden" name="id">
+                        <div class="mb-3">
+                            <label class="form-label">Title</label>
+                            <input type="text" class="form-control" name="title" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Description</label>
+                            <textarea class="form-control" name="description" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Category</label>
+                            <select class="form-control" name="category" required>
+                                <option value="">Select a category</option>
+                                <option value="workout">Work Out</option>
+                                <option value="techno">Techno 90s</option>
+                                <option value="quiet">Quiet Hours</option>
+                                <option value="rap">Rap</option>
+                                <option value="focus">Deep Focus</option>
+                                <option value="beach">Beach Vibes</option>
+                                <option value="pop">Pop Hits</option>
+                                <option value="movie">Movie Classics</option>
+                                <option value="folk">Folk Music</option>
+                                <option value="travel">Travelling</option>
+                                <option value="kids">For Kids</option>
+                                <option value="80s">80s Hits</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Cover Image</label>
+                            <input type="file" class="form-control" name="image" accept="image/*">
+                            <small class="text-muted">Leave empty to keep current image. Maximum file size: 200MB</small>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Audio File</label>
+                            <input type="file" class="form-control" name="audio" accept="audio/*">
+                            <small class="text-muted">Leave empty to keep current audio. Maximum file size: 200MB</small>
+                        </div>
+                        <div class="progress mt-2 mb-3 d-none" id="editUploadProgress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%"></div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logout Confirmation Modal -->
+    <div class="modal fade" id="logoutModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirm Logout</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to log out from Audio X?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="confirmLogout">Log Out</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html> 

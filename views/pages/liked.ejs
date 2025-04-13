@@ -1,0 +1,60 @@
+<!-- Liked Songs Page -->
+<section class="header-section">
+    <h1>Liked Songs</h1>
+</section>
+
+<div class="liked-songs-banner mb-4">
+    <div class="row align-items-center">
+        <div class="col-md-8">
+            <div class="music-banner liked-banner">
+                <div class="banner-content">
+                    <h2>Your Collection</h2>
+                    <h1>Liked Songs</h1>
+                    <p><span id="likedSongsCount"><%= likedSongs.length %></span> songs</p>
+                </div>
+                <div class="play-all-button">
+                    <i class="fas fa-play"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="liked-stats card">
+                <div class="card-body">
+                    <h5>Most Liked Category</h5>
+                    <p id="mostLikedCategory"><%= mostLikedCategory %></p>
+                    <h5>Recently Liked</h5>
+                    <p id="recentlyLiked"><%= recentlyLiked %></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="likedList" class="row">
+    <% if (likedSongs.length === 0) { %>
+        <div class="col-12 text-center">
+            <h3>No liked songs yet</h3>
+            <p>Start exploring and like songs to add them to your collection</p>
+        </div>
+    <% } else { %>
+        <% likedSongs.forEach(function(song) { %>
+            <div class="col-md-4 col-lg-3 mb-4">
+                <div class="music-card card">
+                    <img src="<%= song.imageUrl %>" class="card-img-top" alt="<%= song.title %>">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= song.title %></h5>
+                        <p class="card-text"><%= song.description %></p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button class="btn btn-sm btn-primary play-btn" data-audio="<%= song.audioUrl %>">
+                                <i class="fas fa-play me-1"></i> Play
+                            </button>
+                            <button class="btn btn-sm btn-danger unlike-btn" data-id="<%= song._id %>">
+                                <i class="fas fa-heart-broken me-1"></i> Unlike
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    <% } %>
+</div> 
