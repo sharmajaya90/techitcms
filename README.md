@@ -1,4 +1,4 @@
-# Audio X - Music Library Application
+# TechIT - Music Library Application
 
 A music library application built with Express.js and MongoDB, following the MVC (Model-View-Controller) architecture pattern.
 
