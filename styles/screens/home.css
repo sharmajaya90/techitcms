@@ -1,0 +1,209 @@
+/* ===============================
+   HOME SCREEN STYLES
+   =============================== */
+
+#home-screen {
+    /* Screen is already styled in main.css */
+}
+
+/* Home specific sections */
+#home-screen .section {
+    margin-bottom: 50px;
+}
+
+#home-screen .section:last-child {
+    margin-bottom: 20px;
+}
+
+/* Your Music section */
+.your-music-section .music-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 25px;
+}
+
+/* On Repeat Categories */
+.on-repeat-section .categories-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.on-repeat-section .category-card {
+    padding: 25px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.on-repeat-section .category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.5s;
+}
+
+.on-repeat-section .category-card:hover::before {
+    left: 100%;
+}
+
+.on-repeat-section .category-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.on-repeat-section .category-card:hover .category-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.on-repeat-section .category-card h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* Recently played music cards in home */
+.home-music-card {
+    position: relative;
+    background: var(--tertiary-bg);
+    border-radius: var(--border-radius);
+    padding: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.home-music-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.home-music-card .music-cover {
+    width: 100%;
+    height: 140px;
+    margin-bottom: 0;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    position: relative;
+}
+
+.home-music-card .music-cover::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(transparent, rgba(0,0,0,0.6));
+    pointer-events: none;
+}
+
+.home-music-card .music-info {
+    padding: 15px;
+}
+
+.home-music-card .music-info h4 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.home-music-card .music-info p {
+    font-size: 0.85rem;
+    line-height: 1.3;
+    opacity: 0.8;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.home-music-card .music-category {
+    margin-top: 8px;
+    display: inline-block;
+}
+
+/* Play button overlay */
+.home-music-card .play-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(29, 185, 84, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.home-music-card:hover .play-overlay {
+    opacity: 1;
+}
+
+/* Responsive adjustments for home screen */
+@media (max-width: 768px) {
+    #home-screen .section {
+        margin-bottom: 35px;
+    }
+    
+    .your-music-section .music-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 15px;
+    }
+    
+    .on-repeat-section .categories-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 15px;
+    }
+    
+    .on-repeat-section .category-card {
+        padding: 20px;
+    }
+    
+    .on-repeat-section .category-icon {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+    
+    .home-music-card .music-cover {
+        height: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .your-music-section .music-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 12px;
+    }
+    
+    .on-repeat-section .categories-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 12px;
+    }
+    
+    .on-repeat-section .category-card {
+        padding: 15px;
+    }
+    
+    .on-repeat-section .category-icon {
+        font-size: 1.8rem;
+    }
+    
+    .home-music-card .music-cover {
+        height: 100px;
+    }
+    
+    .home-music-card .music-info {
+        padding: 12px;
+    }
+} 

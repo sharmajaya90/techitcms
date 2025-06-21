@@ -1,0 +1,445 @@
+/* ===============================
+   LIBRARY SCREEN STYLES
+   =============================== */
+
+#library-screen {
+    /* Screen is already styled in main.css */
+}
+
+/* Playlists Section */
+.playlists-section {
+    margin-bottom: 40px;
+}
+
+.playlists-section h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: var(--text-primary);
+}
+
+/* Library Controls */
+.library-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    background: var(--tertiary-bg);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+}
+
+.sort-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.sort-btn {
+    padding: 10px 18px;
+    background: none;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+}
+
+.sort-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--accent-color);
+    transition: left 0.3s ease;
+    z-index: -1;
+}
+
+.sort-btn.active::before,
+.sort-btn:hover::before {
+    left: 0;
+}
+
+.sort-btn.active,
+.sort-btn:hover {
+    background-color: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+    transform: translateY(-1px);
+}
+
+.view-controls label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.view-controls label:hover {
+    color: var(--text-primary);
+}
+
+.view-controls input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent-color);
+    cursor: pointer;
+}
+
+/* Playlists Grid */
+.playlists-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.playlist-card {
+    background-color: var(--tertiary-bg);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.playlist-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-color), #1ed760);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.playlist-card:hover::before {
+    transform: translateX(0);
+}
+
+.playlist-card:hover {
+    background-color: var(--hover-bg);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.playlist-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.playlist-card:hover .playlist-icon {
+    transform: scale(1.1);
+}
+
+.playlist-card h3 {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin: 0 0 8px 0;
+    font-weight: 600;
+}
+
+.playlist-count {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin: 0;
+    font-weight: 500;
+}
+
+.playlist-card.active {
+    background: linear-gradient(135deg, rgba(29, 185, 84, 0.1), rgba(30, 215, 96, 0.1));
+    border-color: var(--accent-color);
+}
+
+.playlist-card.active .playlist-count {
+    color: var(--accent-color);
+}
+
+/* Library Content */
+.library-content {
+    background: var(--secondary-bg);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    min-height: 300px;
+}
+
+.library-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.library-header h3 {
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.library-stats {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.library-grid {
+    display: grid;
+    gap: 15px;
+}
+
+.library-list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    background: var(--tertiary-bg);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.library-list-item:hover {
+    background: var(--hover-bg);
+    transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.library-item-info {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.library-item-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--accent-color), #1ed760);
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.library-item-details h4 {
+    margin: 0 0 5px 0;
+    color: var(--text-primary);
+    font-size: 1rem;
+}
+
+.library-item-details p {
+    margin: 0 0 5px 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.library-item-meta {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.library-item-actions {
+    display: flex;
+    gap: 8px;
+}
+
+/* Library Empty State */
+.library-empty {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-muted);
+}
+
+.library-empty i {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    display: block;
+    opacity: 0.5;
+}
+
+.library-empty h3 {
+    font-size: 1.3rem;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.library-empty p {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    opacity: 0.8;
+}
+
+.library-empty .btn-primary {
+    margin-top: 15px;
+}
+
+/* Add Music Button */
+#addMusicBtn {
+    background: linear-gradient(135deg, var(--accent-color), #1ed760);
+    border: none;
+    color: white;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+#addMusicBtn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+#addMusicBtn:hover::before {
+    left: 100%;
+}
+
+#addMusicBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(29, 185, 84, 0.4);
+}
+
+/* Grouped View */
+.library-grouped {
+    display: block;
+}
+
+.library-group {
+    margin-bottom: 30px;
+}
+
+.library-group-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.library-group-icon {
+    font-size: 1.5rem;
+    margin-right: 10px;
+}
+
+.library-group-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.library-group-count {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-left: auto;
+}
+
+.library-group-items {
+    display: grid;
+    gap: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .library-controls {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        padding: 15px;
+    }
+    
+    .sort-controls {
+        flex-wrap: wrap;
+    }
+    
+    .playlists-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 15px;
+    }
+    
+    .playlist-card {
+        padding: 15px;
+    }
+    
+    .playlist-icon {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+    
+    .library-content {
+        padding: 15px;
+    }
+    
+    .library-list-item {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+    
+    .library-item-info {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    
+    .library-item-actions {
+        align-self: flex-end;
+    }
+}
+
+@media (max-width: 480px) {
+    .playlists-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 12px;
+    }
+    
+    .playlist-card {
+        padding: 12px;
+    }
+    
+    .playlist-icon {
+        font-size: 1.8rem;
+        margin-bottom: 8px;
+    }
+    
+    .sort-btn {
+        font-size: 0.85rem;
+        padding: 8px 14px;
+    }
+    
+    .library-item-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .library-item-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+} 

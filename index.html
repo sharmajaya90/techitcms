@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio X - Your Music Library</title>
+    
+    <!-- Global Styles -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    
+    <!-- Screen-specific Styles -->
+    <link rel="stylesheet" href="styles/screens/home.css">
+    <link rel="stylesheet" href="styles/screens/search.css">
+    <link rel="stylesheet" href="styles/screens/library.css">
+    <link rel="stylesheet" href="styles/screens/liked.css">
+    <link rel="stylesheet" href="styles/screens/settings.css">
+    
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="logo">
+                <h1><i class="fas fa-music"></i> Audio X</h1>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="#" class="nav-link active" data-screen="home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#" class="nav-link" data-screen="search"><i class="fas fa-search"></i> Search</a></li>
+                <li><a href="#" class="nav-link" data-screen="library"><i class="fas fa-book"></i> My Library</a></li>
+                <li><a href="#" class="nav-link" data-screen="liked"><i class="fas fa-heart"></i> Liked Songs</a></li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <button class="btn-pro"><i class="fas fa-crown"></i> Pro</button>
+                <button class="btn-settings" data-screen="settings"><i class="fas fa-cog"></i> Settings</button>
+                <button class="btn-logout" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Log out</button>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="app-header">
+                <div class="header-nav">
+                    <button class="back-btn" id="backBtn" style="display: none;"><i class="fas fa-arrow-left"></i> Back to Categories</button>
+                </div>
+                <div class="user-section">
+                    <span class="pro-badge">Pro</span>
+                    <button class="user-menu"><i class="fas fa-user-circle"></i></button>
+                </div>
+            </header>
+
+            <!-- Screen Container for Dynamic Loading -->
+            <div id="screen-container"></div>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div id="modals-container"></div>
+
+    <!-- Core Scripts -->
+    <script src="scripts/utils.js"></script>
+    <script src="scripts/main.js"></script>
+    
+    <!-- Screen Scripts -->
+    <script src="scripts/screens/home.js"></script>
+    <script src="scripts/screens/search.js"></script>
+    <script src="scripts/screens/library.js"></script>
+    <script src="scripts/screens/liked.js"></script>
+    <script src="scripts/screens/settings.js"></script>
+</body>
+</html> 
